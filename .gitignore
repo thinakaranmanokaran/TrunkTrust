@@ -1,0 +1,25 @@
+# Node / general system files
+.DS_Store
+Thumbs.db
+*.log
+
+# Neutralinojs binaries and builds
+# /dist/
+bin/
+neutralinojs.log
+
+# Neutralinojs config caches / storage
+.storage
+
+# IDE / editor files
+.lite_workspace.lua
+.vscode/
+*.swp
+*.swo
+
+# OS-specific files
+*.bak
+*.tmp
+
+# Optional: generated resource files
+resource.rc
