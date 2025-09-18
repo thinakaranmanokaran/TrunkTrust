@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trunk Trust</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon512.png">
+
+    <!-- Fallback favicon for older browsers or if PNG fails -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon48.png">
+
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    <script>
+        // Function to load CSS dynamically
+        function loadNoInternetCSS() {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'nointernet.css';
+            document.head.appendChild(link);
+        }
+
+        // Check if offline at page load
+        if (!navigator.onLine) {
+            loadNoInternetCSS();
+        }
+
+        // Listen for going offline dynamically
+        window.addEventListener('offline', () => {
+            loadNoInternetCSS();
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+
+        <!-- Left Panel: Request Form -->
+        <div class="bg-[EFEEEA] p-4 flex flex-col gap-4 items-center w-full select-none ">
+            <h1 class="text-6xl font-arraybold  ">Trunk Test</h1>
+
+            <div class="w-full flex items-center">
+                <div id="method-dropdown"
+                    class="w-32 border border-r-0 relative flex items-center justify-between rounded-l-xl h-12 pr-4 bg-[#E9E9E9] px-3 cursor-pointer">
+                    <div id="selected-method">GET</div>
+                    <img id="dropdown-arrow" src="icons/angle-down-solid-full.svg"
+                        class="w-5 h-5 transition-transform duration-200" alt="">
+
+                    <!-- Dropdown list -->
+                    <div id="method-list"
+                        class="absolute bg-white w-full rounded-lg py-1 text-sm shadow-md top-[100%] mt-3 z-20 left-0 flex flex-col hidden">
+                        <!-- Change your dropdown options to: -->
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">GET</div>
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">POST</div>
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">PUT</div>
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">PATCH</div>
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">DELETE
+                        </div>
+                    </div>
+                </div>
+                <input id="url"
+                    class="w-full border focus:outline-none focus:border-[#F97A00] peer-focus:border-l-0 h-12 pl-4 rounded-r-xl shadow-sm p-2 "
+                    placeholder="Enter API URL" />
+                <button id="send"
+                    class="bg-[#F97A00] hidden lg:block py-3 text-white rounded-xl shadow-sm p-2 w-48 ml-3 cursor-pointer h-12">Send
+                    Request</button>
+            </div>
+            <div class="flex justify-between w-full items-end ">
+                <div class="flex justify-start w-full gap-6">
+                    <input type="radio" id="tab-headers" name="method-add" value="Header" class="hidden peer/header"
+                        checked>
+                    <label for="tab-headers"
+                        class="border-b-2 border-white peer-checked/header:border-[#F97A00] cursor-pointer">
+                        Headers <span class="text-[#7A7A73]" id="head-text">(JSON)</span>
+                    </label>
+
+                    <input type="radio" id="tab-body" name="method-add" value="Body" class="hidden peer/body">
+                    <label for="tab-body"
+                        class="border-b-2 border-white peer-checked/body:border-[#F97A00] cursor-pointer">
+                        Body <span class="text-[#7A7A73]" id="body-text">(JSON)</span>
+                    </label>
+                </div>
+                <div id="textformat-dropdown"
+                    class="w-32 border border relative flex items-center justify-between rounded-xl h-12 pr-4 bg-[#E9E9E9] px-3 cursor-pointer">
+                    <div id="textformat-selected-method">Json</div>
+                    <img id="textformat-dropdown-arrow" src="icons/angle-down-solid-full.svg"
+                        class="w-5 h-5 transition-transform duration-200" alt="">
+                    <div id="textformat-method-list"
+                        class="absolute bg-white w-full rounded-lg py-1 text-sm shadow-md top-[100%] mt-3 z-20 left-0 flex flex-col hidden">
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">Json</div>
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">Text</div>
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">Html
+                        </div>
+                        <div class="hover:bg-[#E9E9E9] border border-white hover:border-[#F97A00] px-2 py-1">Xml
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex justify-start w-full">
+
+                <div class="flex flex-col justify-start h-full items-center gap-2 w-full bg-[#E9E9E9] p-3">
+                    <div id="json-editor" class=" w-full min-h-96 max-h-[80vh] "></div>
+                </div>
+            </div>
+
+            <button id="send"
+                class="bg-[#F97A00] lg:hidden py-3 text-white rounded-xl shadow-sm p-2 w-full cursor-pointer relative">
+                <span id="button-text">Send Request</span>
+            </button>
+        </div>
+
+        <!-- Right Panel: Response -->
+        <div class="py-4 px-6 border-t relative">
+            <div class="mb-4">
+                <span id="status">Status: -</span>
+                <span>Response Output</span>
+            </div>
+            <div class="">
+                <div id="response-editor" class="w-full h-[300px] "></div>
+                <div id="progress-container" class="absolute top-0 left-0 w-full h-1 bg-transparent overflow-hidden">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
