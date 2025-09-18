@@ -8,6 +8,7 @@ node_modules
 # /dist/
 bin/
 neutralinojs.log
+site/dist/
 
 # Neutralinojs config caches / storage
 .storage
@@ -24,3 +25,4 @@ neutralinojs.log
 
 # Optional: generated resource files
 resource.rc
+.gitignore
