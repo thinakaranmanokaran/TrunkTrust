@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Register your fonts */
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-Thin.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-ExtraLight.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("./assets/fonts/dmsans/DMSans-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Aonic";
+    src: url("./assets/fonts/number/UrbanShadowSansSerif.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* Extend Tailwind’s theme via CSS variables */
+@theme {
+    --font-dmsans: "DMSans", sans-serif;
+    --font-number: "Aonic", sans-serif;
+
+    --color-dark: #0C0C11;
+    --color-gray: #d2d2d2;
+    --color-lightgray: #888888;
+    --color-darkgray: #2c2c30;
+    --color-light: #ffffff;
+    --color-prime: #F97A00;
+}
