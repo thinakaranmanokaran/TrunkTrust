@@ -97,7 +97,7 @@ const Home = () => {
 
                     {/* Download Button */}
                     <a
-                        href="/TrunkTrust-win_x64_Packed.exe"
+                        href="https://raw.githubusercontent.com/thinakaranmanokaran/TrunkTrust/main/site/public/TrunkTrust-win_x64_Packed.exe"
                         download
                         className='my-2 mt-4 md:mt-8 bg-[#2a4fec] px-6 py-3 md:px-8 md:min-w-60 md:min-h-18 cursor-pointer 
                                    hover:brightness-110 transition-all duration-300 
